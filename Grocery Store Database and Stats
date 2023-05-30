@@ -1,0 +1,20 @@
+CREATE TABLE clothing(id INTEGER PRIMARY KEY,name TEXT, price INTEGER, color TEXT, material TEXT);
+INSERT into clothing VALUES(1,"Pants",4,"blue","jean");
+INSERT into clothing VALUES(2,"Shirts",5,"pink","cotton");
+INSERT into clothing VALUES(3,"Bras",2,"purple","cotton");
+INSERT into clothing VALUES(4,"Hats",3,"Black","synthetic");
+INSERT into clothing VALUES(5,"Socks",4,"White","cotton");
+INSERT into clothing VALUES(6,"Underwear",2,"purple","cotton");
+INSERT into clothing VALUES(7,"Sweater",5,"Green","Synthetic");
+INSERT into clothing VALUES(8,"Jacket",5,"Black","Leather");
+INSERT into clothing VALUES(9,"Shoes",4,"White","Leather");
+INSERT into clothing VALUES(10,"Sweatshirt",5,"Green","Cotton");
+INSERT into clothing VALUES(11,"T-Shirt",5,"White","Cotton");
+INSERT into clothing VALUES(12,"Leggins",4,"Black","Cotton");
+INSERT into clothing VALUES(13,"Flow Pants",4,"Beige","Cotton");
+INSERT into clothing VALUES(14,"Jacket",5,"Pink","Cotton");
+INSERT into clothing VALUES(15,"Sports Bra",2,"Pink","Cotton");
+
+SELECT * FROM clothing WHERE price <3 ORDER BY price DESC;
+
+
