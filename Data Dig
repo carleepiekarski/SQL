@@ -1,0 +1,60 @@
+SELECT median_age, SUM(population) FROM countries GROUP BY median_age;
+
+SELECT density_per_sq_km, SUM(population) FROM countries GROUP BY density_per_sq_km;
+
+SELECT MAX(fertility_rate) FROM countries;
+
+SELECT MIN(median_age) FROM countries;
+
+SELECT name, SUM(population) FROM countries 
+
+GROUP BY name 
+
+HAVING population >90000;
+
+SELECT name, SUM(population) FROM countries 
+
+GROUP BY name 
+
+HAVING population<150000;
+
+SELECT fertility_rate FROM countries;
+
+SELECT name,
+
+percent_one_year_change*population AS New_Population
+
+FROM countries;
+
+
+SELECT COUNT(*),
+
+CASE
+
+WHEN New_Population >5000000 THEN 'Extreme Increase'
+WHEN New_Population >2500000 THEN 'Very Large Increase'
+WHEN New_Population >1250000 THEN 'Large Increase'
+WHEN New_Population >625000 THEN 'Moderate to Large Increase'
+WHEN New_Population >312500 THEN 'Moderate Increase' 
+WHEN New_Population >156250 THEN 'Moderate to Mild Increase'
+WHEN New_Population >78125 THEN 'Mild Increase'
+WHEN New_Population >39062 THEN 'Very Mild Increase'
+WHEN New_Population >19531 THEN 'Extremly Mild Increase'
+WHEN New_Population >0 THEN 'Little to No Increase'
+WHEN New_Population >-19531 THEN 'Extremly Mild Decrease'
+WHEN New_Population >-39062 THEN 'Very Mild Decrease'
+WHEN New_Population >-78125 THEN 'Mild Decrease'
+WHEN New_Population >-156250 THEN 'Moderate to Mild Decrease'
+WHEN New_Population >-312500 THEN 'Moderate Decrease'
+WHEN New_Population >-625000 THEN 'Moderate to Large Decrease'
+WHEN New_Population >-1250000 THEN 'Large Decrease'
+WHEN New_Population >-2500000 THEN 'Very Large Decrease'
+WHEN New_Population >-5000000 THEN 'Extreme Decrease'
+
+END AS 'Population_Loss_Risk' FROM countries 
+GROUP BY Population_Loss_Risk;
+
+SELECT percent_one_year_change FROM countries;
+SELECT * FROM countries WHERE median_age >15 AND population >1000000;
+
+SELECT * FROM countries WHERE median_age <15 OR population <1000000
