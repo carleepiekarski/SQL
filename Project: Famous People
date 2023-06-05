@@ -1,0 +1,76 @@
+CREATE table movie_stars(id INTEGER PRIMARY KEY, full_name TEXT, top_movie TEXT, birth_date TEXT);
+
+INSERT into movie_stars VALUES(1, "Tom Hanks", "Forrest Gump", "07/09/1956");
+
+INSERT into movie_stars VALUES(2,"Sandra Bullock", "The Blind Side", "07/26/1964");
+
+INSERT into movie_stars VALUES(3, "Brad Pitt", "The Devil's Own", "12/18/1963");
+
+INSERT into movie_stars VALUES(4, "Harrison Ford", "The Devil's Own", "07/13/1942");
+
+INSERT into movie_stars VALUES(5, "Chris Hemsworth", "Thor", "08/11/1983");
+
+INSERT into movie_stars VALUES(6, "Meryl Streep", "The Devil Wears Prada", "06/22/1949");
+
+INSERT into movie_stars VALUES(7, "Julia Roberts", "Eat Pray Love", "10/28/1967");
+
+INSERT into movie_stars VALUES(8, "Bradley Cooper", "American Sniper", "01/05/1975");
+
+INSERT into movie_stars VALUES(9, "Johnny Depp", "Rango", "06/09/1963");
+
+INSERT into movie_stars VALUES(10, "Will Smith", "The Pursuit of Happyness", "09/25/1968");
+
+CREATE TABLE favorite_things(movie_stars_id INTEGER PRIMARY KEY, food TEXT, sport TEXT, color TEXT, music_genre TEXT);
+
+INSERT into favorite_things VALUES(1, "Pancakes", "Football", "Red", "Rock pop");
+
+INSERT into favorite_things VALUES(2, "Fried Chicken", "Gymnastics", "Black", "Pop");
+
+INSERT into favorite_things VALUES(3, "Pizza", "Football", "Blue", "Rock");
+
+INSERT into favorite_things VALUES(4, "Cheese", "Football", "Blue", "Rock");
+
+INSERT into favorite_things VALUES(5, "Pizza", "Surfing", "Blue", "Folk");
+
+INSERT into favorite_things VALUES(6, "Pizza", "Football", "Purple", "Pop");
+
+INSERT into favorite_things VALUES(7, "Pasta", "Yoga", "Green", "Pop"); 
+
+INSERT into favorite_things VALUES(8, "Sushi", "Football", "Blue", "Rock");
+
+INSERT into favorite_things VALUES(9, "Fried Chicken", "Football", "Black", "Rock");
+
+INSERT into favorite_things VALUES(10, "Sandwiches", "Basketball", "Red", "Rap");
+
+
+SELECT m.full_name, m.birth_date, f.food, f.sport, f.color, f.music_genre
+FROM movie_stars as m 
+INNER JOIN favorite_things as f
+ON m.id= f.movie_stars_id;
+
+CREATE TABLE buddies (movie_stars_id INTEGER PRIMARY KEY, full_name TEXT, buddies_id INTEGER);
+
+INSERT into buddies VALUES( 1, "Tom Hanks", 3);
+
+INSERT into buddies VALUES(2, "Sandra Bullock", 4);
+
+INSERT into buddies VALUES(3, "Brad Pitt",1);
+
+INSERT into buddies VALUES(4, "Harrison Ford", 2);
+
+INSERT into buddies VALUES(5, "Chris Hemsworth", 7);
+
+INSERT into buddies VALUES(6, "Meryl Streep", 8);
+
+INSERT into buddies VALUES(7, "Julia Roberts", 5);
+
+INSERT into buddies VALUES(8, "Bradley Cooper", 6);
+
+INSERT into buddies VALUES (9, "Johnny Depp", 10);
+
+INSERT into buddies VALUES (10, "Will Smith",9);
+
+SELECT m.full_name, b.buddies_id, b.movie_stars_id
+FROM buddies as b
+JOIN movie_stars as m
+ON b.buddies_id=m.id;
