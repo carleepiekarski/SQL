@@ -41,6 +41,8 @@ WHERE quantity >2
 AND length(orderID)=6
 AND orderID <> 'Order ID';
 
-SELECT distinct product, quantity, location
+SELECT distinct product, SUM(quantity)
 FROM BIT_DB.FebSales 
-WHERE location like '%Los Angeles%';
+WHERE location like '%Los Angeles%'
+GROUP BY product;
+
