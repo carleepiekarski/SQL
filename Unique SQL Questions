@@ -1,0 +1,28 @@
+Window Functions
+# In this assignment I examined data from a database containing information on safety rating for bike lanes. 
+#The goal was to pretend I was hired to create a table that showed the bike lanes by street, safety rating,
+average safety rating, and a reccomendation.
+
+SELECT street, safetyrating,
+AVG(safetyrating)OVER (PARTITION BY street)as "Avg_safety_rating",
+CASE WHEN AVG(safetyrating)OVER (PARTITION BY street)>=4 then "Leave As-Is" 
+WHEN Avg(safetyrating) OVER (PARTITION BY street)<2.5 then "Remove"
+ELSE "Improvements Needed"
+END AS "Reccomendation"
+FROM CityBikeLanes;
+
+CTE Tables 
+# My boss now also wants to see a list of bike lanes by street that have a average safety rating of 4.0 or higher
+with the actual average rating and a label that says "Safe Lane"
+
+WITH avg_safety_cte as(
+SELECT c.street, AVG(c.safetyrating)as avg_safety_rate
+FROM CityBikeLanes as c
+GROUP BY c.street
+)
+
+SELECT street, avg_safety_rate,'Safe Lane' as tag
+FROM avg_safety_cte
+WHERE avg_safety_rate >=4.0;
+
+
