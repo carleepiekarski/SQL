@@ -1,6 +1,7 @@
-Window Functions
 # In this assignment I examined data from a database containing information on safety rating for bike lanes. 
-#The goal was to pretend I was hired to create a table that showed the bike lanes by street, safety rating,
+
+#Window Functions
+--The goal was to pretend I was hired to create a table that showed the bike lanes by street, safety rating,
 average safety rating, and a reccomendation.
 
 SELECT street, safetyrating,
@@ -11,8 +12,8 @@ ELSE "Improvements Needed"
 END AS "Reccomendation"
 FROM CityBikeLanes;
 
-CTE Tables 
-# My boss now also wants to see a list of bike lanes by street that have a average safety rating of 4.0 or higher
+#CTE Tables 
+-- My boss now also wants to see a list of bike lanes by street that have a average safety rating of 4.0 or higher
 with the actual average rating and a label that says "Safe Lane"
 
 WITH avg_safety_cte as(
