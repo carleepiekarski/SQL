@@ -1,3 +1,5 @@
+--In this code I created a table for a clothing company. I then inserted values into the database to make a table. 
+
 CREATE TABLE clothing(id INTEGER PRIMARY KEY,name TEXT, price INTEGER, color TEXT, material TEXT);
 INSERT into clothing VALUES(1,"Pants",4,"blue","jean");
 INSERT into clothing VALUES(2,"Shirts",5,"pink","cotton");
