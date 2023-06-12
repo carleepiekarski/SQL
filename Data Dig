@@ -1,9 +1,15 @@
+--In this I took a look at data from different countries around the world and aimed to find interesting insights. 
+
+-What is the median_age, population of all countries in the data base? 
+
 SELECT median_age, SUM(population) FROM countries GROUP BY median_age;
 
 SELECT density_per_sq_km, SUM(population) FROM countries GROUP BY density_per_sq_km;
 
 SELECT MAX(fertility_rate) FROM countries;
 
+
+--What is the median_age from each country that has a population of more than 90,000?
 SELECT MIN(median_age) FROM countries;
 
 SELECT name, SUM(population) FROM countries 
@@ -12,6 +18,8 @@ GROUP BY name
 
 HAVING population >90000;
 
+
+--What is the name and population of countries that have a population greater than 150,000?
 SELECT name, SUM(population) FROM countries 
 
 GROUP BY name 
@@ -27,7 +35,7 @@ percent_one_year_change*population AS New_Population
 FROM countries;
 
 
-SELECT COUNT(*),
+SELECT count (*),
 
 CASE
 
