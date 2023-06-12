@@ -1,3 +1,5 @@
+--In this project I created a table for movie stars and the inserted typical information about them into the table. 
+
 CREATE table movie_stars(id INTEGER PRIMARY KEY, full_name TEXT, top_movie TEXT, birth_date TEXT);
 
 INSERT into movie_stars VALUES(1, "Tom Hanks", "Forrest Gump", "07/09/1956");
@@ -19,6 +21,10 @@ INSERT into movie_stars VALUES(8, "Bradley Cooper", "American Sniper", "01/05/19
 INSERT into movie_stars VALUES(9, "Johnny Depp", "Rango", "06/09/1963");
 
 INSERT into movie_stars VALUES(10, "Will Smith", "The Pursuit of Happyness", "09/25/1968");
+
+
+--After this table was made, I then created a new table to display "favorites" information about the movie stars into a new table. 
+
 
 CREATE TABLE favorite_things(movie_stars_id INTEGER PRIMARY KEY, food TEXT, sport TEXT, color TEXT, music_genre TEXT);
 
@@ -43,10 +49,16 @@ INSERT into favorite_things VALUES(9, "Fried Chicken", "Football", "Black", "Roc
 INSERT into favorite_things VALUES(10, "Sandwiches", "Basketball", "Red", "Rap");
 
 
+--I then wanted to create a join between these two tables that only included certain information. I then displayed these. 
+
+
 SELECT m.full_name, m.birth_date, f.food, f.sport, f.color, f.music_genre
 FROM movie_stars as m 
 INNER JOIN favorite_things as f
 ON m.id= f.movie_stars_id;
+
+--After this I wanted to create a buddy system for each movie star. For this I created a new table with a movier star id as well
+as a buddies id. 
 
 CREATE TABLE buddies (movie_stars_id INTEGER PRIMARY KEY, full_name TEXT, buddies_id INTEGER);
 
@@ -69,6 +81,8 @@ INSERT into buddies VALUES(8, "Bradley Cooper", 6);
 INSERT into buddies VALUES (9, "Johnny Depp", 10);
 
 INSERT into buddies VALUES (10, "Will Smith",9);
+
+--After this table was made, I could then easily view each movie star and which buddy they were linked to. 
 
 SELECT m.full_name, b.buddies_id, b.movie_stars_id
 FROM buddies as b
