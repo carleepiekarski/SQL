@@ -1,3 +1,6 @@
+#In this project I used amazon prime title data to create my own set of 10 
+questions. These are the questions I aimed to answer: 
+
 --How many movies are included in the dataset?
 SELECT count(type) 
 FROM chinook0.amazon_prime_titles 
@@ -17,21 +20,55 @@ ORDER BY title
 LIMIT 1;
 
 --Who are the directors of the TV shows with a 13+ rating?
-
+SELECT director, type, rating
+FROM chinook0.amazon_prime_titles
+WHERE type= 'TV Show'
+AND rating= '13+'
+AND director <> " ";
 
 --Which country has the most titles available on Amazon Prime?
-
+SELECT distinct country, COUNT(distinct title) 
+FROM chinook0.amazon_prime_titles
+WHERE country <> ' '
+GROUP BY country 
+ORDER BY title desc
+LIMIT 1;
 
 --How many titles were added on March 30, 2021?
-
+SELECT count(title), 
+date_added
+FROM chinook0.amazon_prime_titles
+WHERE date_added = "30-Mar-21"
+AND length(date_added)=8;
 
 --What is the average release year of the movies in the dataset?
-
+SELECT AVG(release_year),
+type
+FROM chinook0.amazon_prime_titles
+WHERE type = 'Movie';
 
 --Which genre(s) are associated with the movie "The Grand Seduction"?
+SELECT listed_in as genre,
+title
+FROM chinook0.amazon_prime_titles
+WHERE title= "The Grand Seduction";
 
-
---List the top 5 movies with the highest ratings.
-
+--List the title and movie descriptions of movies made in 2017.
+SELECT type,
+title, 
+description,
+release_year
+FROM chinook0.amazon_prime_titles
+WHERE type= 'Movie'
+AND release_year= '2017';
 
 --Which movie has the shortest duration?
+SELECT title,
+type,
+MIN(duration) 
+FROM chinook0.amazon_prime_titles
+WHERE duration <> '0 min'
+AND type= 'Movie'
+GROUP BY title
+ORDER BY duration asc
+LIMIT 1;
