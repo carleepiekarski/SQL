@@ -1,0 +1,37 @@
+--How many movies are included in the dataset?
+SELECT count(type) 
+FROM chinook0.amazon_prime_titles 
+WHERE type= 'Movie';
+
+--How many TV shows are included in the dataset?
+SELECT count(type) 
+FROM chinook0.amazon_prime_titles 
+WHERE type= 'TV Show';
+
+--What is the title of the movie with the longest duration?
+SELECT title, MAX(duration) as longest_duration,type 
+FROM chinook0.amazon_prime_titles
+WHERE type= 'Movie'
+GROUP BY duration
+ORDER BY title
+LIMIT 1;
+
+--Who are the directors of the TV shows with a 13+ rating?
+
+
+--Which country has the most titles available on Amazon Prime?
+
+
+--How many titles were added on March 30, 2021?
+
+
+--What is the average release year of the movies in the dataset?
+
+
+--Which genre(s) are associated with the movie "The Grand Seduction"?
+
+
+--List the top 5 movies with the highest ratings.
+
+
+--Which movie has the shortest duration?
